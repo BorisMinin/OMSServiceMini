@@ -34,7 +34,7 @@ namespace OMSServiceMini
             {
                 config.PostProcess = document =>
                 {
-                    document.Info.Version = "v1";
+                    document.Info.Version = "v2";
                     document.Info.Title = "ToDo API";
                     document.Info.Description = "A simple ASP.NET Core web API";
                     document.Info.TermsOfService = "None";
