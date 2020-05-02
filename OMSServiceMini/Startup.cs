@@ -34,14 +34,13 @@ namespace OMSServiceMini
             {
                 config.PostProcess = document =>
                 {
-                    document.Info.Version = "v2";
-                    document.Info.Title = "ToDo API";
-                    document.Info.Description = "A simple ASP.NET Core web API";
-                    document.Info.TermsOfService = "None";
+                    document.Info.Version = "v1";
+                    document.Info.Title = "OMSServiceMini";
+                    document.Info.Description = "A simple study project ASP.NET Core web API";
                     document.Info.Contact = new NSwag.OpenApiContact
                     {
-                        Name = "Shayne Boyer",
-                        Email = string.Empty,
+                        Name = "Boris Minin",
+                        Email = "boris.minin@outlook.com",
                         Url = "https://twitter.com/spboyer"
                     };
                     document.Info.License = new NSwag.OpenApiLicense
