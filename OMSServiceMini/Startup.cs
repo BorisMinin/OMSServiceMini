@@ -41,12 +41,12 @@ namespace OMSServiceMini
                     {
                         Name = "Boris Minin",
                         Email = "boris.minin@outlook.com",
-                        Url = "https://twitter.com/spboyer"
+                        Url = "https://www.facebook.com/borisminindeveloper"
                     };
                     document.Info.License = new NSwag.OpenApiLicense
                     {
-                        Name = "Use under LICX",
-                        Url = "https://example.com/license"
+                        Name = "look at my github",
+                        Url = "https://github.com/BorisMinin"
                     };
                 };
             });
