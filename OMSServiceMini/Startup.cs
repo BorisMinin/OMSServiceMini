@@ -45,7 +45,7 @@ namespace OMSServiceMini
                     };
                     document.Info.License = new NSwag.OpenApiLicense
                     {
-                        Name = "look at my github",
+                        Name = "Look at my github",
                         Url = "https://github.com/BorisMinin"
                     };
                 };
