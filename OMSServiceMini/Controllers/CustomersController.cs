@@ -27,7 +27,7 @@ namespace OMSServiceMini.Controllers
         //{
         //    return await _northwindContext.Customers.
         //        Where(c => c.Country == country && c.Fax != null).ToListAsync();
-        //        //.Select(s => new Customer{CustomerId = s.CustomerId});
+        //    //.Select(s => new Customer{CustomerId = s.CustomerId});
         //}
         #endregion
 
@@ -66,18 +66,18 @@ namespace OMSServiceMini.Controllers
         #endregion
 
         #region GET startSymbols search
-        /// <summary>
-        /// 
-        /// </summary>
-        /// <param name="startSymbols">один или несколько символов(не более 5) с которых начинается значения поля таблицы CustomerId</param>
-        /// <returns>информацию о найденных компаниях</returns>
-        // get api/customers/company
-        [HttpGet("{startSymbols}")]
-        public async Task<IEnumerable<Customer>> GetCompany(string startSymbols)
-        {
-            return await _northwindContext.Customers.Where
-                (c => c.CompanyName.StartsWith(startSymbols)).ToListAsync();
-        }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <param name="startSymbols">один или несколько символов(не более 5) с которых начинается значения поля таблицы CustomerId</param>
+        ///// <returns>информацию о найденных компаниях</returns>
+        //// get api/customers/company
+        //[HttpGet("{startSymbols}")]
+        //public async Task<IEnumerable<Customer>> GetCompany(string startSymbols)
+        //{
+        //    return await _northwindContext.Customers.Where
+        //        (c => c.CompanyName.StartsWith(startSymbols)).ToListAsync();
+        //}
         #endregion
 
         #region GET postalCode search
@@ -95,5 +95,16 @@ namespace OMSServiceMini.Controllers
         // 2. получить сумму заказов для каждого customer // * учитывать скидку
         // 3. получить все заказы за 1998 год
         // 4. ?объединить все запросы в один
+
+        #region Task 1 completed
+        //// Get api/customers
+        //[HttpGet]
+        //public async Task<IEnumerable<Customer>> GetAllCustomers()
+        //{
+        //    return await _northwindContext.Customers.ToListAsync();
+        //}
+        #endregion
+
+
     }
 }
