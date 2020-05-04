@@ -89,5 +89,11 @@ namespace OMSServiceMini.Controllers
         //        (c => c.PostalCode.Contains(postalCode)).ToListAsync();
         //}
         #endregion
+
+        // чемпион (customer) по сумме заказов (OrderDetails) за последний год наблюдений (Orders)
+        // 1. получить всех customer (id)
+        // 2. получить сумму заказов для каждого customer // * учитывать скидку
+        // 3. получить все заказы за 1998 год
+        // 4. ?объединить все запросы в один
     }
 }
