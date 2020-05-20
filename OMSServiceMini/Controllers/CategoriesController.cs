@@ -20,42 +20,56 @@ namespace OMSServiceMini.Controllers
             _northwindContext = northwindContext;
         }
 
-        ////get api/categories
+        //get api/categories
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Category>>> GetAllCategory()
+        {
+            return await _northwindContext.Categories.ToListAsync();
+        }
+
+        ////GET: api/categories?with_image=true
         //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Category>>> GetAllCategory()
+        //public async Task<ActionResult<IEnumerable<Category>>> GetCategories(bool with_images = false)
         //{
-        //    return await _northwindContext.Categories.ToListAsync();
+        //    if (with_images)
+        //    {
+        //        return await _northwindContext.Categories.ToListAsync();
+        //    }
+        //    else //if (with_images == false)
+        //    {
+        //        var categories = _northwindContext.Categories.
+        //            Select(
+        //            c => new Category
+        //            {
+        //                CategoryName = c.CategoryName,
+        //                CategoryId = c.CategoryId
+        //            }
+        //            );
+        //        return await categories.ToListAsync();
+        //    }
         //}
 
-        //GET: api/categories?with_image=true
-        [HttpGet]
-        public async Task<ActionResult<IEnumerable<Category>>> GetCategories(bool with_images = false)
+        //// Get api/categories/id
+        //[HttpGet("{id}")]
+        //public async Task<ActionResult<Category>> GetCategoryId(int id)
+        //{
+        //    return await _northwindContext.Categories.FindAsync(id);
+        //}
+
+        // (POST)Создать новую сущность в таблицу Category
+        // Post: api/categories
+        [HttpPost]
+        public async Task<ActionResult<Category>> PostCategory(Category newCategory)
         {
-            if (with_images)
+            _northwindContext.Categories.Add(newCategory);
+            await _northwindContext.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAllCategory), new
             {
-                return await _northwindContext.Categories.ToListAsync();
-            }
-            else //if (with_images == false)
-            {
-                var categories = _northwindContext.Categories.
-                    Select(
-                    c => new Category
-                    {
-                        CategoryName = c.CategoryName,
-                        CategoryId = c.CategoryId
-                    }
-                    );
-                return await categories.ToListAsync();
-            }
+                id = newCategory.CategoryId,
+                name = newCategory.CategoryName,
+                description = newCategory.Description
+            }, newCategory);
         }
-
-        // Get api/categories/id
-        [HttpGet("{id}")]
-        public async Task<ActionResult<Category>> GetCategoryId(int id)
-        {
-            return await _northwindContext.Categories.FindAsync(id);
-        }
-
-
     }
 }

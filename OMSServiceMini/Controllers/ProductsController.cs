@@ -19,6 +19,7 @@ namespace OMSServiceMini.Controllers
             _northwindContext = northwindContext;
         }
 
+        #region GET requests
         // Get api/products
         [HttpGet]
         public async Task<IEnumerable<Product>> GetAllProducts()
@@ -40,7 +41,6 @@ namespace OMSServiceMini.Controllers
             return await _northwindContext.Products.FindAsync(name);
         }
 
-
         /// <summary>
         /// 
         /// </summary>
@@ -60,5 +60,6 @@ namespace OMSServiceMini.Controllers
         //    else
         //        return NotFound();
         //}
+        #endregion
     }
 }

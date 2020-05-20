@@ -95,6 +95,12 @@ namespace OMSServiceMini.Controllers
         // 2. получить сумму заказов для каждого customer // * учитывать скидку
         // 3. получить все заказы за 1998 год
         // 4. ?объединить все запросы в один
+        //public Customer GetChempion(int year)
+        //{
+        //    Customer result;
+        //    result = _northwindContext.Customers;
+        //    return result;
+        //}
 
         #region Task 1 completed
         //// Get api/customers
@@ -105,6 +111,18 @@ namespace OMSServiceMini.Controllers
         //}
         #endregion
 
+        #region Task 2 
+        /// <summary>
+        /// Получить общую сумму заказов для каждого покупателя
+        /// </summary>
+        /// <returns>Список id покупателей и общей суммой их заказа</returns>
+        
+        // get api/customers
+        //[HttpGet]
+        //public async Task<IEnumerable<OrderDetail>> GetUnitPriceOfCustomers()
+        //{
 
+        //}
+        #endregion
     }
 }
