@@ -71,6 +71,7 @@ namespace OMSServiceMini.Controllers
         //    "CategoryName": "Name1",
         //    "Description": "Description1"
         //}
+
         // Post: api/categories
         [HttpPost]
         public async Task<ActionResult<Category>> PostCategory(Category newCategory)
@@ -94,9 +95,15 @@ namespace OMSServiceMini.Controllers
         // Так как запрос Put может лишь заменить одну сущность на другую, то будем менять
         // В Postman выбираем пункт PUT, в строке поиска пишем запрос "api/categories/12", 12-Id категории, которую я хочу заменить
         // Также как и в запросе POST в разделе Body выбираем raw и JSON
-        // PUT: api/categories/id
         // Если всё сделано правильно, то status: 204 No Contant
         // Далее отправляйся в запрос GET и в самом низу можешь увидеть изменения
+        //{
+        // "CategoryId": 12,
+        //    "CategoryName": "Name12",
+        //    "Description": "Description12"
+        //}
+
+        // PUT: api/categories/id
         [HttpPut("{id}")]
         public async Task<IActionResult> PutCategory(long id, Category newCategory)
         {
@@ -109,6 +116,29 @@ namespace OMSServiceMini.Controllers
             await _northwindContext.SaveChangesAsync();
 
             return NoContent();
+        }
+        #endregion
+
+        #region DELETE
+        // Удалить недавно добавленую и обновленную сущность
+        // В разделе Body выбираем raw и JSON
+        // Никакого кода JSON не нужно, мы лишь удаляем сущность, указав её Id
+        // Запусти GET и увидишь что выбранного тобой Id больше нет
+
+        // DELETE: api/categories/id
+        [HttpDelete("{id}")]
+        public async Task<ActionResult<Category>> DeleteCategory(int id)
+        {
+            var deleteItem = await _northwindContext.Categories.FindAsync(id);
+            if (deleteItem == null)
+            {
+                return NotFound();
+            }
+
+            _northwindContext.Categories.Remove(deleteItem);
+            await _northwindContext.SaveChangesAsync();
+
+            return deleteItem;
         }
         #endregion
     }
