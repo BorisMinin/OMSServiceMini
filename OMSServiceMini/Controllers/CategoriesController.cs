@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel;
 using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
@@ -52,17 +53,30 @@ namespace OMSServiceMini.Controllers
         #endregion
 
         #region GET id
-        //// Get api/categories/id
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Category>> GetCategoryId(int id)
-        //{
-        //    return await _northwindContext.Categories.FindAsync(id);
-        //}
+        // Get api/categories/id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Category>> GetCategoryId(int id)
+        {
+            //return await _northwindContext.Categories.FindAsync(id); // easy version
+
+            var category = await _northwindContext.Categories.FindAsync(id);
+
+            if (category == null)
+                return NotFound("Category not found with used Id");
+            else
+                return new Category
+                {
+                    CategoryId = category.CategoryId,
+                    CategoryName = category.CategoryName,
+                    Description = category.Description,
+                    Products = category.Products
+                };
+        }
         #endregion
 
         #region POST
         // (POST)Создать новую сущность в таблице Category
-        // Ниже приведён запрос в Postman, выбираем пункт PUT, в разделе Body выбираем raw и JSON,
+        // Ниже приведён запрос в Postman, выбираем пункт POST, в разделе Body выбираем raw и JSON,
         // После выполнения запроса, необходимо создать новый запрос GET, и вывести весь список, в самом низу должна быть добавленная твоя сущность
         // Если присвоить значения не всем свойствам, то незаполненые свойства будут иметь значение Null, \
         // если поле было обязательным для заполнения, а ты не заполнил, то будет ошибка
@@ -79,12 +93,13 @@ namespace OMSServiceMini.Controllers
             _northwindContext.Categories.Add(newCategory);
             await _northwindContext.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAllCategory), new
-            {
-                //id = newCategory.CategoryId,
-                name = newCategory.CategoryName,
-                description = newCategory.Description
-            }, newCategory);
+            return CreatedAtAction(nameof(GetAllCategory),
+                new
+                {
+                    name = newCategory.CategoryName,
+                    description = newCategory.Description
+                },
+                newCategory);
         }
         #endregion
 
@@ -105,11 +120,11 @@ namespace OMSServiceMini.Controllers
 
         // PUT: api/categories/id
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutCategory(long id, Category newCategory)
+        public async Task<IActionResult> PutCategory(int id, Category newCategory)
         {
             if (id != newCategory.CategoryId)
             {
-                return BadRequest();
+                return BadRequest("Jopa");
             }
 
             _northwindContext.Entry(newCategory).State = EntityState.Modified;
@@ -138,7 +153,8 @@ namespace OMSServiceMini.Controllers
             _northwindContext.Categories.Remove(deleteItem);
             await _northwindContext.SaveChangesAsync();
 
-            return deleteItem;
+            //return deleteItem;
+            return NoContent();
         }
         #endregion
     }

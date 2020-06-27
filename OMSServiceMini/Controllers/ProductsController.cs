@@ -27,19 +27,19 @@ namespace OMSServiceMini.Controllers
             return await _northwindContext.Products.ToListAsync();
         }
 
-        //// Get api/products/id
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Product>> GetIdProduct(int id)
-        //{
-        //    return await _northwindContext.Products.FindAsync(id);
-        //}
+        // Get api/products/id
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetIdProduct(int id)
+        {
+            return await _northwindContext.Products.FindAsync(id);
+        }
 
         // get api/products/name
-        [HttpGet("{name}")]
-        public async Task<ActionResult<Product>> GetNameProduct(string name)
-        {
-            return await _northwindContext.Products.FindAsync(name);
-        }
+        //[HttpGet("{name}")]
+        //public async Task<ActionResult<Product>> GetNameProduct(string name)
+        //{
+        //    return await _northwindContext.Products.FindAsync(name);
+        //}
 
         /// <summary>
         /// 
@@ -60,6 +60,23 @@ namespace OMSServiceMini.Controllers
         //    else
         //        return NotFound();
         //}
+        #endregion
+
+        #region POST
+        // POST: api/products
+        [HttpPost]
+        public async Task<ActionResult<Product>> PostProduct(Product newProduct)
+        {
+            _northwindContext.Products.Add(newProduct);
+            await _northwindContext.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAllProducts), new
+            {
+                //id = newCategory.CategoryId,
+                name = newProduct.ProductName
+                //unitPrice = newProduct.UnitPrice
+            }, newProduct);
+        }
         #endregion
     }
 }
