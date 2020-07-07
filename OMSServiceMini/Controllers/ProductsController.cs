@@ -18,13 +18,24 @@ namespace OMSServiceMini.Controllers
         {
             _northwindContext = northwindContext;
         }
-
+        
         #region GET requests
         // Get api/products
         [HttpGet]
-        public async Task<IEnumerable<Product>> GetAllProducts()
+        public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
-            return await _northwindContext.Products.ToListAsync();
+            //public async Task<IEnumerable<Product>> GetAllProducts
+            return await _northwindContext.Products.ToListAsync(); // easy version, without ActionResult
+            //return await _northwindContext.Products.Select(p => new Product
+            //{
+            //    ProductId = p.ProductId,
+            //    ProductName = p.ProductName,
+            //    Supplier = p.Supplier,
+            //    Category = p.Category,
+            //    UnitPrice = p.UnitPrice,
+            //    UnitsInStock = p.UnitsInStock,
+            //    Discontinued = p.Discontinued
+            //}).ToListAsync();
         }
 
         // Get api/products/id
@@ -65,17 +76,18 @@ namespace OMSServiceMini.Controllers
         #region POST
         // POST: api/products
         [HttpPost]
-        public async Task<ActionResult<Product>> PostProduct(Product newProduct)
+        public async Task<ActionResult<Product>> PostProduct([FromBody] Product product)
         {
-            _northwindContext.Products.Add(newProduct);
+            var _product = product;
+
+            _northwindContext.Products.Add(product);
             await _northwindContext.SaveChangesAsync();
 
-            return CreatedAtAction(nameof(GetAllProducts), new
-            {
-                //id = newCategory.CategoryId,
-                name = newProduct.ProductName
-                //unitPrice = newProduct.UnitPrice
-            }, newProduct);
+            return CreatedAtAction(nameof(GetAllProducts),
+                new Product
+                {
+                    ProductId = product.ProductId
+                }, product);
         }
         #endregion
     }
