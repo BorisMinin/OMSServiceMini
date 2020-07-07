@@ -30,7 +30,6 @@ namespace OMSServiceMini.Models
         public short? UnitsInStock { get; set; }
         public short? UnitsOnOrder { get; set; }
         public short? ReorderLevel { get; set; }
-        [Required]
         public bool? Discontinued { get; set; }
 
         [ForeignKey(nameof(CategoryId))]

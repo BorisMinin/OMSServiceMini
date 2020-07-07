@@ -124,7 +124,7 @@ namespace OMSServiceMini.Controllers
         {
             if (id != newCategory.CategoryId)
             {
-                return BadRequest("Jopa");
+                return BadRequest("Категория с данным id не найдена");
             }
 
             _northwindContext.Entry(newCategory).State = EntityState.Modified;

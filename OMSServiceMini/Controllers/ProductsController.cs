@@ -18,7 +18,7 @@ namespace OMSServiceMini.Controllers
         {
             _northwindContext = northwindContext;
         }
-        
+
         #region GET requests
         // Get api/products
         [HttpGet]
@@ -90,5 +90,32 @@ namespace OMSServiceMini.Controllers
                 }, product);
         }
         #endregion
+
+        /// <summary>
+        /// Обновляем имеющийся продукт, указав все значения
+        /// {
+        ///"ProductId": 85,
+        ///"ProductName":"AddedNewProduct",
+        ///"unitsInStock" : 100,
+        ///"discontinued" : false
+        ///}
+        /// </summary>
+        /// <param name="id">id продукта</param>
+        /// <param name="item"></param>
+        /// <returns></returns>
+        // api/products
+        [HttpPut("{id}")]
+        public async Task<ActionResult<Product>> PutProduct(int id, Product item)
+        {
+            if (id != item.ProductId)
+            {
+                return BadRequest("Продукт с данным id не найден");
+            }
+
+            _northwindContext.Entry(item).State = EntityState.Modified;
+            await _northwindContext.SaveChangesAsync();
+
+            return NoContent();
+        }
     }
 }
