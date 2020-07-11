@@ -91,6 +91,7 @@ namespace OMSServiceMini.Controllers
         }
         #endregion
 
+        #region PUT
         /// <summary>
         /// Обновляем имеющийся продукт, указав все значения
         /// {
@@ -117,5 +118,24 @@ namespace OMSServiceMini.Controllers
 
             return NoContent();
         }
+        #endregion
+
+        #region DELETE
+        // DELETE: api/products
+        [HttpDelete("{id}")]
+        public async Task<IActionResult> DeleteProduct(int id)
+        {
+            var deleteItem = await _northwindContext.Products.FindAsync(id);
+            if (deleteItem == null)
+            {
+                return NotFound("Продукт с данным Id не найден");
+            }
+
+            _northwindContext.Products.Remove(deleteItem);
+            await _northwindContext.SaveChangesAsync();
+
+            return NoContent();
+        }
+        #endregion
     }
 }
