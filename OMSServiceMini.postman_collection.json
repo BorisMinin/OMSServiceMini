@@ -1,0 +1,240 @@
+{
+	"info": {
+		"_postman_id": "3469c52b-6b68-4f10-bbd1-50e10bd84615",
+		"name": "OMSServiceMini",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "All Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/Categories",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"Categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID Categories",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/Categories/1",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"Categories",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "POST",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"CategoryName\": \"1111\",\r\n    \"Description\": \"222222\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49681/api/Categories/",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"Categories",
+								""
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Orders",
+			"item": [
+				{
+					"name": "All Orders",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/orders",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"orders"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ID Order",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/orders/10248",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"orders",
+								"10248"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "Products",
+			"item": [
+				{
+					"name": "All products",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Add product",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"Discontinued\" : false, \r\n    \"ProductName\": \"NewJopa\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49681/api/products",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"products"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "PUT Product",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"ProductId\": 85,\r\n    \"ProductName\":\"AddedNewProduct\",\r\n    \"unitsInStock\" : 100,\r\n    \"discontinued\" : false\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:49681/api/products/85",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"products",
+								"85"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "DELETE Product",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:49681/api/products/811",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "49681",
+							"path": [
+								"api",
+								"products",
+								"811"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
