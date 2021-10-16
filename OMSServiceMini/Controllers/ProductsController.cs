@@ -21,7 +21,7 @@ namespace OMSServiceMini.Controllers
 
         #region GET requests
         // Get api/products
-        [HttpGet]
+        //[HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetAllProducts()
         {
             //public async Task<IEnumerable<Product>> GetAllProducts
