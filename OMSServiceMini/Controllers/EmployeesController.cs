@@ -10,13 +10,34 @@ using OMSServiceMini.Models;
 
 namespace OMSServiceMini.Controllers
 {
+    [Route("api/[controller]")]
+    [ApiController]
     public class EmployeesController : Controller
     {
-        private readonly NorthwindContext _context;
+        private readonly NorthwindContext _northwindContext;
 
-        public EmployeesController(NorthwindContext context)
+        public EmployeesController(NorthwindContext northwindContext)
         {
-            _context = context;
+            _northwindContext = northwindContext;
         }
+
+        //[HttpGet]
+        //public async Task<ActionResult<IEnumerable<Employee>>> AllEmployees()
+        //{
+        //    return await _northwindContext.Employees.ToListAsync();
+        //}
+        [Route ("a")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
+        {
+            //return await _northwindContext.Employees.ToListAsync();
+            return await _northwindContext.Employees.Select(e => new Employee
+            {
+                EmployeeId = e.EmployeeId,
+                LastName = e.LastName
+
+            }).ToListAsync();
+        }
+
     }
 }
