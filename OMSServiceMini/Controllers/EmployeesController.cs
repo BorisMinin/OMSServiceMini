@@ -21,21 +21,21 @@ namespace OMSServiceMini.Controllers
             _northwindContext = northwindContext;
         }
 
-        //[HttpGet]
-        //public async Task<ActionResult<IEnumerable<Employee>>> AllEmployees()
-        //{
-        //    return await _northwindContext.Employees.ToListAsync();
-        //}
-        [Route ("a")]
+        // GET http://localhost:49681/api/Employees
+        /// <summary>
+        /// Get запрос возвращает данные всех сотрудников (id, имя, фамилия, страна)
+        /// </summary>
+        /// <returns></returns>
+        [Route("a")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
-            //return await _northwindContext.Employees.ToListAsync();
             return await _northwindContext.Employees.Select(e => new Employee
             {
                 EmployeeId = e.EmployeeId,
-                LastName = e.LastName
-
+                FirstName = e.FirstName,
+                LastName = e.LastName,
+                Country = e.Country
             }).ToListAsync();
         }
 
