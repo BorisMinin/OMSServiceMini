@@ -53,21 +53,21 @@ namespace OMSServiceMini.Controllers
 
 
         #endregion
-        ////POST
-        //[Route("a")]
-        //[HttpPost]
-        //public async Task<ActionResult<Employee>> AddNewEmployee(Category newCategory)
-        //{
-        //    _northwindContext.Categories.Add(newCategory);
-        //    await _northwindContext.SaveChangesAsync();
 
-        //    return CreatedAtAction(nameof(GetAllCategory),
-        //        new
-        //        {
-        //            name = newCategory.CategoryName,
-        //            description = newCategory.Description
-        //        },
-        //        newCategory);
-        //}
+        //POST http://localhost:49681/api/Employees/AddEmployee
+        [Route("AddEmployee")]
+        [HttpPost]
+        public async Task<ActionResult<Employee>> AddNewEmployee(Employee newEmployee)
+        {
+            _northwindContext.Employees.Add(newEmployee);
+            await _northwindContext.SaveChangesAsync();
+
+            return CreatedAtAction(nameof(GetAllEmployees),
+                new
+                {
+                    firstName = newEmployee.FirstName,
+                    lastName = newEmployee.LastName
+                }, newEmployee);
+        }
     }
 }
