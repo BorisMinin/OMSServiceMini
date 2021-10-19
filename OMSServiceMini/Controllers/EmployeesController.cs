@@ -21,12 +21,24 @@ namespace OMSServiceMini.Controllers
             _northwindContext = northwindContext;
         }
 
-        // GET http://localhost:49681/api/Employees
+        #region GET requests
+
+        // GET http://localhost:49681/api/AllEmployees
+        /// <summary>
+        /// GET запрос возвращает список всех сотрудников
+        /// </summary>
+        [Route("AllEmployees")]
+        [HttpGet]
+        public async Task<ActionResult<IEnumerable<Employee>>> GetAllEmployees()
+        {
+            return await _northwindContext.Employees.ToListAsync();
+        }
+
+        // GET http://localhost:49681/api/SimpleEmlployees
         /// <summary>
         /// Get запрос возвращает данные всех сотрудников (id, имя, фамилия, страна)
         /// </summary>
-        /// <returns></returns>
-        [Route("a")]
+        [Route("SimpleEmlployees")]
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Employee>>> GetEmployees()
         {
@@ -39,5 +51,23 @@ namespace OMSServiceMini.Controllers
             }).ToListAsync();
         }
 
+
+        #endregion
+        ////POST
+        //[Route("a")]
+        //[HttpPost]
+        //public async Task<ActionResult<Employee>> AddNewEmployee(Category newCategory)
+        //{
+        //    _northwindContext.Categories.Add(newCategory);
+        //    await _northwindContext.SaveChangesAsync();
+
+        //    return CreatedAtAction(nameof(GetAllCategory),
+        //        new
+        //        {
+        //            name = newCategory.CategoryName,
+        //            description = newCategory.Description
+        //        },
+        //        newCategory);
+        //}
     }
 }
