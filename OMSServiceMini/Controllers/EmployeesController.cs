@@ -55,6 +55,11 @@ namespace OMSServiceMini.Controllers
         #endregion
 
         //POST http://localhost:49681/api/Employees/AddEmployee
+        /// <summary>
+        /// Создат новую сущность в БД с полями имени и фамилии
+        /// </summary>
+        /// <param name="newEmployee"></param>
+        /// <returns></returns>
         [Route("AddEmployee")]
         [HttpPost]
         public async Task<ActionResult<Employee>> AddNewEmployee(Employee newEmployee)
