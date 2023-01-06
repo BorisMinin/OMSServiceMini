@@ -1,14 +1,10 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using OMSServiceMini.Data;
 using OMSServiceMini.Models;
 using Microsoft.EntityFrameworkCore;
-using System.Collections;
-using NSwag.Generation.Processors;
 
 namespace OMSServiceMini.Controllers
 {
