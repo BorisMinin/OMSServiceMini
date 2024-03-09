@@ -1,9 +1,8 @@
-﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio Version 16
-VisualStudioVersion = 16.0.30002.166
+# Visual Studio Version 17
+VisualStudioVersion = 17.9.34622.214
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "OMSServiceMini", "OMSServiceMini\OMSServiceMini.csproj", "{B0C4FBA7-D2DA-47B7-8897-AB0BD5D5CFB7}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "OMSServiceMini", "OMSServiceMini\OMSServiceMini.csproj", "{37271513-5DB3-4B6A-8A92-4FF5DBD3791E}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -11,10 +10,10 @@ Global
 		Release|Any CPU = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(ProjectConfigurationPlatforms) = postSolution
-		{B0C4FBA7-D2DA-47B7-8897-AB0BD5D5CFB7}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{B0C4FBA7-D2DA-47B7-8897-AB0BD5D5CFB7}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{B0C4FBA7-D2DA-47B7-8897-AB0BD5D5CFB7}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{B0C4FBA7-D2DA-47B7-8897-AB0BD5D5CFB7}.Release|Any CPU.Build.0 = Release|Any CPU
+		{37271513-5DB3-4B6A-8A92-4FF5DBD3791E}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{37271513-5DB3-4B6A-8A92-4FF5DBD3791E}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{37271513-5DB3-4B6A-8A92-4FF5DBD3791E}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{37271513-5DB3-4B6A-8A92-4FF5DBD3791E}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

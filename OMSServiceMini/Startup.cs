@@ -24,6 +24,7 @@ namespace OMSServiceMini
             string connection = Configuration.GetConnectionString("OMSDatabase");
             services.AddDbContext<NorthwindContext>(options => options.UseSqlServer(connection));
 
+            services.AddSwaggerGen();
             services.AddSwaggerDocument(config =>
             {
                 config.PostProcess = document =>
@@ -56,6 +57,8 @@ namespace OMSServiceMini
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
+                //app.UseSwagger;
+                app.UseSwaggerUi();
             }
 
             app.UseRouting();
@@ -69,7 +72,6 @@ namespace OMSServiceMini
 
             // Register the Swagger generator and the Swagger UI middlewares
             app.UseOpenApi();
-            app.UseSwaggerUi3();
         }
     }
 }
